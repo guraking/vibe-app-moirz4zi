@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Portfolio — Interaction Designer</title>
+  <meta name="description" content="최신 디자인 트렌드 기반의 인터랙션과 마이크로 애니메이션 포트폴리오 사이트" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <div class="loader" id="loader">
+    <div class="loader-orb"></div>
+    <p>Crafting Experience</p>
+  </div>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="siteHeader">
+    <a href="#home" class="brand magnetic">
+      <span class="brand-mark">N</span>
+      <span class="brand-text">NOVA</span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle magnetic" id="themeToggle" aria-label="테마 변경">
+        <span class="theme-icon">✦</span>
+      </button>
+      <button class="menu-toggle magnetic" id="menuToggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#work">Selected Work</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </aside>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-gradient hero-gradient-a"></div>
+      <div class="hero-gradient hero-gradient-b"></div>
+
+      <div class="hero-content">
+        <div class="eyebrow reveal">
+          <span class="pulse"></span>
+          Available for freelance · 2026
+        </div>
+
+        <h1 class="hero-title reveal">
+          Digital products with
+          <span class="gradient-text">motion, emotion</span>
+          and precision.
+        </h1>
+
+        <p class="hero-copy reveal">
+          최신 디자인 트렌드, 몰입형 인터랙션, 섬세한 마이크로 애니메이션으로
+          브랜드와 사용자를 연결하는 프론트엔드 경험을 설계합니다.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="#work" class="primary-btn magnetic">
+            프로젝트 보기
+            <span>↗</span>
+          </a>
+          <button class="secondary-btn magnetic" id="openCommand">
+            Quick Brief
+            <span>⌘K</span>
+          </button>
+        </div>
+
+        <div class="hero-stats reveal">
+          <div>
+            <strong data-count="42">0</strong>
+            <span>Launched projects</span>
+          </div>
+          <div>
+            <strong data-count="8">0</strong>
+            <span>Design awards</span>
+          </div>
+          <div>
+            <strong data-count="96">0</strong>
+            <span>Client satisfaction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="glass-card profile-card tilt-card">
+          <div class="profile-top">
+            <div class="avatar">
+              <span></span>
+            </div>
+            <div>
+              <h3>Nova Lee</h3>
+              <p>Interaction Designer</p>
+            </div>
+          </div>
+
+          <div class="profile-orbit">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit-dot"></div>
+          </div>
+
+          <div class="skill-pills">
+            <span>UI Motion</span>
+            <span>WebGL</span>
+            <span>Design System</span>
+            <span>Prototype</span>
+          </div>
+        </div>
+
+        <div class="floating-badge badge-one">+320ms Delight</div>
+        <div class="floating-badge badge-two">AI-ready UX</div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span></span>
+        Scroll
+      </div>
+    </section>
+
+    <section class="marquee-section">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Interaction Design</span>
+          <span>Micro Animation</span>
+          <span>Creative Frontend</span>
+          <span>Product Strategy</span>
+          <span>Motion System</span>
+          <span>Interaction Design</span>
+          <span>Micro Animation</span>
+          <span>Creative Frontend</span>
+          <span>Product Strategy</span>
+          <span>Motion System</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="section-head reveal">
+        <span class="section-kicker">Selected Work</span>
+        <h2>사용자의 손끝에서 살아나는 프로젝트</h2>
+        <p>감각적인 비주얼과 성능 중심 구현을 결합한 최근 작업입니다.</p>
+      </div>
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn active magnetic" data-filter="all">All</button>
+        <button class="filter-btn magnetic" data-filter="product">Product</button>
+        <button class="filter-btn magnetic" data-filter="brand">Brand</button>
+        <button class="filter-btn magnetic" data-filter="motion">Motion</button>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <article class="project-card tilt-card reveal" data-category="product" data-title="Aurora Finance" data-desc="AI 기반 개인 금융 분석 대시보드. 모듈형 카드, 실시간 그래프, 부드러운 숫자 모션으로 복잡한 데이터를 직관적으로 전달했습니다.">
+          <div class="project-image image-a">
+            <span class="project-tag">Product</span>
+          </div>
+          <div class="project-body">
+            <h3>Aurora Finance</h3>
+            <p>AI fintech dashboard with liquid glass UI.</p>
+            <button class="project-open magnetic">View case study</button>
+          </div>
+        </article>
+
+        <article class="project-card tilt-card reveal" data-category="brand" data-title="Mono Studio" data-desc="브랜드 스튜디오를 위한 포트폴리오 리뉴얼. 대담한 타이포그래피와 스크롤 기반 트랜지션, 매끄러운 갤러리 탐색을 설계했습니다.">
+          <div class="project-image image-b">
+            <span class="project-tag">Brand</span>
+          </div>
+          <div class="project-body">
+            <h3>Mono Studio</h3>
+            <p>Editorial portfolio with kinetic typography.</p>
+            <button class="project-open magnetic">View case study</button>
+          </div>
+        </article>
+
+        <article class="project-card tilt-card reveal" data-category="motion" data-title="Pulse OS" data-desc="웨어러블 헬스케어 OS 프로토타입. 상태 변화에 반응하는 마이크로 인터랙션과 햅틱 느낌의 모션 시스템을 구축했습니다.">
+          <div class="project-image image-c">
+            <span class="project-tag">Motion</span>
+          </div>
+          <div class="project-body">
+            <h3>Pulse OS</h3>
+            <p>Wearable interface with haptic motion cues.</p>
+            <button class="project-open magnetic">View case study</button>
+          </div>
+        </article>
+
+        <article class="project-card tilt-card reveal" data-category="product" data-title="Orbit Commerce" data-desc="글로벌 커머스 플랫폼의 체크아웃 플로우 개선. 마찰을 줄이는 인터랙션과 단계별 피드백으로 전환율을 높였습니다.">
+          <div class="project-image image-d">
+            <span class="project-tag">Product</span>
+          </div>
+          <div class="project-body">
+            <h3>Orbit Commerce</h3>
+            <p>Checkout experience with predictive feedback.</p>
+            <button class="project-open magnetic">View case study</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="section-head reveal">
+        <span class="section-kicker">Capabilities</span>
+        <h2>디자인과 구현 사이의 간극을 줄입니다</h2>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">01</div>
+          <h3>Interactive Landing</h3>
+          <p>브랜드 서사를 스크롤, 패럴랙스, 마이크로 모션으로 몰입감 있게 표현합니다.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">02</div>
+          <h3>Product UI System</h3>
+          <p>확장 가능한 컴포넌트, 토큰, 상태별 인터랙션을 갖춘 디자인 시스템을 구축합니다.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">03</div>
+          <h3>Motion Prototype</h3>
+          <p>실제 사용자 흐름에 맞춘 프로토타입과 애니메이션 가이드를 제공합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="section-head reveal">
+        <span class="section-kicker">Process</span>
+        <h2>빠르게 만들고, 섬세하게 다듬습니다</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal">
+          <span>Discovery</span>
+          <h3>목표와 사용자의 접점을 찾기</h3>
+          <p>비즈니스 목표, 핵심 사용자, 경쟁 환경을 분석해 명확한 경험 방향을 정의합니다.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span>Design Sprint</span>
+          <h3>움직이는 화면으로 검증하기</h3>
+          <p>정적 시안보다 빠른 인터랙티브 프로토타입으로 사용성과 감성을 함께 검증합니다.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span>Build & Polish</span>
+          <h3>성능과 디테일을 동시에</h3>
+          <p>접근성, 반응형, 로딩 성능, 모션 타이밍까지 실제 서비스 품질로 완성합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-card reveal">
+        <div>
+          <span class="section-kicker">Let's collaborate</span>
+          <h2>아이디어를 감각적인 웹 경험으로 바꿔볼까요?</h2>
+          <p>프로젝트 목표와 일정만 남겨주세요. 24시간 이내에 맞춤 제안을 보내드립니다.</p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <label>
+            <span>이름</span>
+            <input type="text" name="name" placeholder="홍길동" required />
+          </label>
+          <label>
+            <span>이메일</span>
+            <input type="email" name="email" placeholder="hello@example.com" required />
+          </label>
+          <label>
+            <span>프로젝트 설명</span>
+            <textarea name="message" rows="4" placeholder="원하는 분위기, 기능, 일정 등을 알려주세요." required></textarea>
+          </label>
+          <button type="submit" class="primary-btn magnetic">
+            제안 요청하기
+            <span>→</span>
+          </button>
+          <p class="form-message" id="formMessage"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Nova Portfolio. Crafted with motion.</p>
+    <div>
+      <a href="#home">Top</a>
+      <a href="mailto:hello@nova.design">Email</a>
+      <a href="#">Behance</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel">
+      <button class="modal-close magnetic" data-close-modal aria-label="닫기">×</button>
+      <span class="section-kicker">Case Study</span>
+      <h3 id="modalTitle">Project</h3>
+      <p id="modalDesc">Project description</p>
+      <div class="modal-metrics">
+        <div>
+          <strong>38%</strong>
+          <span>Conversion lift</span>
+        </div>
+        <div>
+          <strong>1.2s</strong>
+          <span>Faster load</span>
+        </div>
+        <div>
+          <strong>94</strong>
+          <span>Lighthouse score</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="command-palette" id="commandPalette" aria-hidden="true">
+    <div class="command-backdrop" data-close-command></div>
+    <div class="command-panel">
+      <div class="command-header">
+        <span>Quick Brief</span>
+        <button data-close-command>Esc</button>
+      </div>
+      <input id="commandInput" type="text" placeholder="예: SaaS 랜딩페이지, 프리미엄한 느낌, 2주 일정" />
+      <div class="command-suggestions">
+        <button data-suggest="AI 제품 랜딩페이지 제작 문의">AI 제품 랜딩페이지</button>
+        <button data-suggest="포트폴리오 사이트 리뉴얼 문의">포트폴리오 리뉴얼</button>
+        <button data-suggest="대시보드 UI 인터랙션 개선 문의">대시보드 인터랙션</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
